@@ -42,7 +42,9 @@ try:
 except ValueError:
     print("\nO valor informado não é compativel com o programa.\n")
 
-print("Salário Bruto Informado: ", salarioBruto)
-print("Taxa do IRRF: ", taxaIRRF)
-print("Taxa do INSS: ", taxaINSS)
-print("Valor Final: ", salarioBruto - (taxaIRRF + taxaINSS))
+salarioLiquido = salarioBruto - (taxaIRRF + taxaINSS)
+
+print(f"Salário Bruto Informado: {salarioBruto:.2f}")
+print(f"Taxa do IRRF: {taxaIRRF:.2f}")
+print(f"Taxa do INSS: {taxaINSS:.2f}")
+print(f"Valor Final: {salarioLiquido:.2f}")
