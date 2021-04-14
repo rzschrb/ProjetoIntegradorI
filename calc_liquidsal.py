@@ -7,8 +7,10 @@ parIRRF = [0, 142.80, 354.8, 636.13, 869.36] # Lista de divisão de dedução do
 
 salINSS = [1100, 2203.48, 3305.22, 6433.57] # Lista de divisão de salários - INSS
 aliINSS = [7.50, 9, 12, 14] # Lista de divisão de aliquotas em relação aos salários - INSS
+parINSS = [82.5, 99.31, 132.20]
 
 salarioBruto = 0
+salarioBrutoB = salarioBruto
 taxaIRRF = 0
 taxaINSS = 0
 
@@ -31,11 +33,14 @@ try:
     if (salarioBruto <= salINSS[0]): # Salário igual ou menor a 1100
         taxaINSS = salarioBruto * (aliINSS[0]/100)
     elif (salarioBruto <= salINSS[1]): # Salário igual ou menor a 2203,48
-        taxaINSS = salarioBruto * (aliINSS[1]/100)
+        salarioBrutoB = salarioBruto - salINSS[0]
+        taxaINSS = salarioBrutoB * (aliINSS[1]/100) + parINSS[0]
     elif (salarioBruto <= salINSS[2]): # Salário igual ou menor a 3305,22
-        taxaINSS = salarioBruto * (aliINSS[2]/100)
+        salarioBrutoB = salarioBruto - salINSS[1]
+        taxaINSS = salarioBrutoB * (aliINSS[2]/100) + (parINSS[0] + parINSS[1])
     elif (salarioBruto <= salINSS[3]): # Salário igual ou menor a 6433,57
-        taxaINSS = salarioBruto * (aliINSS[3]/100)
+        salarioBrutoB = salarioBruto - salINSS[2]
+        taxaINSS = salarioBrutoB * (aliINSS[3]/100) + (parINSS[0] + parINSS[1] + parINSS[2])
     else: # Salário acima do teto do INSS
         taxaINSS = (salINSS[0]*(aliINSS[0]/100)) + ((salINSS[1]-salINSS[0])*(aliINSS[1]/100)) + ((salINSS[2]-salINSS[1])*(aliINSS[2]/100)) + ((salINSS[3]-salINSS[2])*(aliINSS[3]/100))
 
