@@ -64,7 +64,7 @@ def calculo_13():
     NMT = float(input('Tempo total de trabalho esse ano(meses):'))
     NMTO = NMT - 2
 
-    #Cálculo INSS (OK)
+    #Cálculo INSS 
 
     SBB = SB    #Variável de controle p cálculo progressivo
     #Parcelas de cada faixa de salário da tabela
@@ -95,25 +95,27 @@ def calculo_13():
         INSS = 751.97
     AL = 0
 
-    #Cálculo do IRRF (Errado)
-    if SB <= 1903.98:
+    #Cálculo do IRRF 
+
+    SB2 = SB - INSS  # base de cálculo
+
+    if SB2 <= 1903.98:
         IRRF = 0
     else:
-        if SB >= 1903.99 and SB <=2862.65:
+        if SB2 >= 1903.99 and SB2 <=2862.65:
             AL = 0.075
             PD = 142.8
-        elif SB >= 2862.66 and SB <= 3751.05:
+        elif SB2 >= 2862.66 and SB2 <= 3751.05:
             AL = 0.15
             PD = 354.8
-        elif SB >= 3751.06 and SB <= 4664.68:
+        elif SB2 >= 3751.06 and SB2 <= 4664.68:
             AL = 0.225
             PD = 636.13
         else:
             AL = 0.275
             PD = 869.36
-        SB2 = SB - INSS   # base de cálculo
-        IRRF = (SB2*AL) - PD
-
+        IRRF = SB2*AL - PD
+    print(f'CONTROLECONTROLECONTROLE ==== sb2-{SB2}, pd-{PD}, al-{AL} ')
     #Cálculo das parcelas
               # Parcela 1
     VEP = (SB / 12) * NMTO
