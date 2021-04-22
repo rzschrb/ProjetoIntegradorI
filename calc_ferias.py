@@ -33,7 +33,7 @@ try:
         #Cálculo IRRF listas do Ricardão
 
         if (sb <= salIRRF[0]): # Salário igual ou menor a 1903,98.
-            irrf = sb * (aliIRRF[0]/100) - parIRRF[0]
+            taxaIRRF = sb * (aliIRRF[0]/100) - parIRRF[0]
         elif (sb <= salIRRF[1]): # Salário igual ou menor a 2826,65.
             taxaIRRF = sb * (aliIRRF[1]/100) - parIRRF[1]
         elif (sb <= salIRRF[2]): # Salário igual ou menor a 3751,05.
