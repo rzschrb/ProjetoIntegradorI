@@ -20,20 +20,25 @@ try:
     else:
         pv = (sb/30)*df
 
-        print("Seu primeiro pagamento será R$", "%.2f" %pv);
+        print(f"Seu primeiro pagamento será R$ {pv: .2f}");
 
         sv = pv/3
 
-        print("Este valor represente 1/3 da férias líquidas conforme o Abono Pecuniário R$", "%.2f" %sv)
+        print(f"Este valor representa 1/3 da férias líquidas {sv: .2f}")
 
-        tb = pv + sv
+        abono = pv/3
+        tercoAbono = abono/3
 
-        print("O seu Total Bruto é de com o acréscimo de 1/3 ", "%.2f" %tb)
+        print(f"O abono pecuario é de R${abono: .2f} e o Terço do abono é de R${tercoAbono: .2f}")
+
+        tb = pv + sv + abono + tercoAbono
+
+        print(f"O seu Total Bruto é de com o acréscimo de 1/3 {tb: .2f}")
 
         #Cálculo IRRF listas do Ricardão
 
         if (sb <= salIRRF[0]): # Salário igual ou menor a 1903,98.
-            irrf = sb * (aliIRRF[0]/100) - parIRRF[0]
+            taxaIRRF = sb * (aliIRRF[0]/100) - parIRRF[0]
         elif (sb <= salIRRF[1]): # Salário igual ou menor a 2826,65.
             taxaIRRF = sb * (aliIRRF[1]/100) - parIRRF[1]
         elif (sb <= salIRRF[2]): # Salário igual ou menor a 3751,05.
@@ -63,7 +68,9 @@ try:
 
         tl = tb - (taxaIRRF + taxaINSS)
 
-        print(f"Seu total líquido será de R$ {tl:.2f}")
+        print(f"O valor do desconto da Taxa IRRF foi de: {taxaIRRF: .2f}")
+        print(f"O valor do desconto da Taxa INSS foi de: {taxaINSS: .2f}")
+        print(f"Seu total líquido será de R$ {tl: .2f}")
 
 
 except ValueError:
