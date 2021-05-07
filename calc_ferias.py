@@ -63,7 +63,7 @@ try:
 
         tl = tb - (taxaIRRF + taxaINSS)
 
-        print("Seu total líquido será de R$ ", "%.2f" %tl)
+        print(f"Seu total líquido será de R$ {tl:.2f}")
 
 
 except ValueError:
