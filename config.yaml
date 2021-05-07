@@ -1,0 +1,3 @@
+database: aluno/aluno@localhost/xe
+
+icpath: D:\\oraclexe\\app\\oracle\\instantclient_19_10
