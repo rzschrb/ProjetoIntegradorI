@@ -64,9 +64,4 @@ def permitir_acesso(senha,chave,senha_linha): #utiliza os parametros chave e sen
     tupla = encriptação(senha,chave)          #feita na encriptação, então compara a senha digitada encriptada e a senha armazenada encriptada
     if tupla[1] == senha_linha:
         return True
-lista = []
-lista.append(encriptação('jucabal1'))
-lista.append(encriptação('amadeus31'))
-lista.append(encriptação('123456789'))
-lista.append(encriptação('senha123'))
-for n in lista: print(n)
+
